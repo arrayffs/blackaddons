@@ -203,8 +203,8 @@ public class OverlayEditScreen extends Screen {
     public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
         if (selected != null && selected.resizable()) {
             int step = (int) Math.round(verticalAmount * 8);
-            int nw = Math.max(16, selected.width() + step);
-            int nh = Math.max(16, selected.height() + step);
+            int nw = Math.max(1, selected.width() + step);
+            int nh = Math.max(1, selected.height() + step);
             selected.setSize(nw, nh);
             return true;
         }

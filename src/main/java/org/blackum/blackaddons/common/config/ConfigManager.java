@@ -8,6 +8,7 @@ import com.google.gson.JsonParser;
 import net.fabricmc.loader.api.FabricLoader;
 import org.blackum.blackaddons.feature.cheat.AutoBM;
 import org.blackum.blackaddons.feature.cheat.AutoTNT;
+import org.blackum.blackaddons.feature.hud.HudOptions;
 import org.blackum.blackaddons.gui.screen.main.BaseScreen;
 import org.blackum.blackaddons.gui.render.Theme;
 import org.blackum.blackaddons.gui.notification.NotificationType;
@@ -357,6 +358,8 @@ public class ConfigManager {
         public boolean useCardLayout = true;
         public float forcedGuiScale = 1.5f;
         public Map<String, CardState> cardStates = new HashMap<>();
+
+        public HudOptions hudOptions = new HudOptions();
 
         // Bot
         public String botUrl = Constants.DEFAULT_BOT_URL;
