@@ -1,5 +1,26 @@
 package org.blackum.blackaddons.feature.cheat;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Random;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.scheduler.Scheduler;
+import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
+import org.blackum.blackaddons.common.util.mc.LocationUtils;
+import org.blackum.blackaddons.feature.chat.ChatActionExecutor;
+import org.blackum.blackaddons.feature.chat.ChatUtils;
+import org.blackum.blackaddons.feature.rotation.RotationManager;
+import org.blackum.blackaddons.mixin.core.GameRendererAccessor;
+import org.joml.Matrix4f;
+import org.joml.Quaternionf;
+import org.joml.Vector4f;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
@@ -11,34 +32,12 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.feature.rotation.RotationManager;
-import org.blackum.blackaddons.common.util.mc.LocationUtils;
-import org.blackum.blackaddons.common.scheduler.Scheduler;
-import org.blackum.blackaddons.feature.chat.ChatActionExecutor;
-import org.blackum.blackaddons.feature.chat.ChatUtils;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.mixin.core.GameRendererAccessor;
-import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
-import org.joml.Matrix4f;
-import org.joml.Quaternionf;
-import org.joml.Vector4f;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Locale;
-import java.util.Random;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class AutoSS {
     private static final BlockPos START_BUTTON = new BlockPos(110, 121, 91);

@@ -1,15 +1,15 @@
 package org.blackum.blackaddons.mixin.core;
 
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.KeyboardInput;
-import org.blackum.blackaddons.feature.waypoint.AlignUtils;
-import org.blackum.blackaddons.feature.cheat.Freecam;
-import org.blackum.blackaddons.feature.chat.ChatActionExecutor;
 import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
+import org.blackum.blackaddons.feature.cheat.Freecam;
+import org.blackum.blackaddons.feature.waypoint.AlignUtils;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
+
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.KeyboardInput;
 
 @Mixin(KeyboardInput.class)
 public abstract class KeyboardInputMixin {

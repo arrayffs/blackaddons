@@ -1,25 +1,23 @@
 package org.blackum.blackaddons.gui.widget.row;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
+import org.blackum.blackaddons.Blackaddons;
 import org.blackum.blackaddons.feature.waypoint.WaypointDragState;
 import org.blackum.blackaddons.feature.waypoint.WaypointGroup;
 import org.blackum.blackaddons.feature.waypoint.WaypointManager;
 import org.blackum.blackaddons.gui.render.RenderHelper;
 import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.screen.main.BlackAddonsGUI;
-import org.blackum.blackaddons.Blackaddons;
 import org.blackum.blackaddons.gui.screen.feature.WaypointGroupEditScreen;
+import org.blackum.blackaddons.gui.screen.main.BlackAddonsGUI;
+import org.blackum.blackaddons.gui.widget.base.Button;
+import org.blackum.blackaddons.gui.widget.base.Widget;
+import org.blackum.blackaddons.gui.widget.input.ToggleSwitch;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 
 public class WaypointGroupCard extends Widget {
 

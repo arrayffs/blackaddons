@@ -1,20 +1,25 @@
 package org.blackum.blackaddons.common.config;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
-import net.fabricmc.loader.api.FabricLoader;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.constants.Constants;
-import org.blackum.blackaddons.feature.waypoint.Waypoint;
-import org.blackum.blackaddons.feature.waypoint.WaypointManager;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.constants.Constants;
+import org.blackum.blackaddons.feature.waypoint.Waypoint;
+import org.blackum.blackaddons.feature.waypoint.WaypointManager;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
+
+import net.fabricmc.loader.api.FabricLoader;
 
 public class ActionManager {
     private static ActionManager instance;

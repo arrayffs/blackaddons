@@ -1,19 +1,15 @@
 package org.blackum.blackaddons.gui.widget.base;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import org.blackum.blackaddons.common.model.SkyblockItem;
+import org.blackum.blackaddons.common.util.format.FormatUtils;
+import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
+
+import com.google.gson.JsonObject;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import org.blackum.blackaddons.common.model.SkyblockItem;
-import org.blackum.blackaddons.gui.render.RenderHelper;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.common.util.format.FormatUtils;
-import com.google.gson.JsonObject;
 
 public class PetDetailWidget extends Widget {
     private SkyblockItem pet;

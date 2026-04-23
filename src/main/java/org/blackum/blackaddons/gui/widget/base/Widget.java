@@ -1,11 +1,5 @@
 package org.blackum.blackaddons.gui.widget.base;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
-
 import net.minecraft.client.gui.GuiGraphics;
 
 public abstract class Widget {

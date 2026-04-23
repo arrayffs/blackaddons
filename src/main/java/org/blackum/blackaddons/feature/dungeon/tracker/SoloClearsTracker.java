@@ -1,23 +1,23 @@
 package org.blackum.blackaddons.feature.dungeon.tracker;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.common.model.DungeonFloor;
 import org.blackum.blackaddons.common.util.mc.LocationUtils;
 import org.blackum.blackaddons.common.util.mc.ScoreboardUtils;
 import org.blackum.blackaddons.common.util.mc.TabListUtils;
+import org.blackum.blackaddons.feature.chat.ChatUtils;
+import org.blackum.blackaddons.feature.dungeon.score.DungeonScore;
 import org.blackum.blackaddons.gui.notification.NotificationManager;
 import org.blackum.blackaddons.gui.notification.NotificationType;
-
-import org.blackum.blackaddons.feature.chat.ChatUtils;
-import net.minecraft.ChatFormatting;
-import org.blackum.blackaddons.feature.dungeon.score.DungeonScore;
 import org.blackum.blackaddons.service.BotIntegration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 
 public class SoloClearsTracker {
     private static boolean runRecorded = false;

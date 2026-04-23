@@ -1,29 +1,30 @@
 package org.blackum.blackaddons.client.render;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.io.IOUtils;
+import org.blackum.blackaddons.common.util.mc.McCompat;
+
 import com.mojang.blaze3d.pipeline.BlendFunction;
 import com.mojang.blaze3d.pipeline.RenderPipeline;
 import com.mojang.blaze3d.platform.DepthTestFunction;
+import com.mojang.blaze3d.shaders.ShaderType;
 import com.mojang.blaze3d.shaders.UniformType;
 import com.mojang.blaze3d.systems.GpuDevice;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.DefaultVertexFormat;
 import com.mojang.blaze3d.vertex.VertexFormat;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderPipelines;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.server.packs.resources.Resource;
-import org.apache.commons.io.IOUtils;
-import com.mojang.blaze3d.shaders.ShaderType;
-import org.blackum.blackaddons.common.util.mc.McCompat;
 //? if < 1.21.11 {
 /*import net.minecraft.resources.ResourceLocation;*/
 //?} else
 import net.minecraft.resources.Identifier;
-
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.server.packs.resources.Resource;
+import net.minecraft.server.packs.resources.ResourceManager;
 
 public class BlackaddonsRenderPipelines {
 

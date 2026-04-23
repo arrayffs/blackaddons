@@ -1,22 +1,18 @@
 package org.blackum.blackaddons.gui.widget.input;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import java.util.List;
+import java.util.function.Consumer;
 
-import net.minecraft.ChatFormatting;
+import org.blackum.blackaddons.gui.animation.Animation;
+import org.blackum.blackaddons.gui.animation.Easing;
+import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.gui.widget.base.Widget;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.sounds.SoundEvents;
-import org.blackum.blackaddons.gui.animation.Animation;
-import org.blackum.blackaddons.gui.animation.Easing;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.render.RenderHelper;
-import java.util.List;
-import java.util.function.Consumer;
 
 public class Dropdown extends Widget {
 

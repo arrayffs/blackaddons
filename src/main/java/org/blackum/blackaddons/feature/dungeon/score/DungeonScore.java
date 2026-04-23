@@ -1,21 +1,19 @@
 package org.blackum.blackaddons.feature.dungeon.score;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import net.minecraft.client.Minecraft;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.feature.profile.ProfileStateManager;
-import org.blackum.blackaddons.common.model.DungeonFloor;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.model.DungeonFloor;
 import org.blackum.blackaddons.common.util.mc.LocationUtils;
 import org.blackum.blackaddons.common.util.mc.ScoreboardUtils;
 import org.blackum.blackaddons.common.util.mc.TabListUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import net.minecraft.client.Minecraft;
 
 public class DungeonScore {
     private static final Logger LOGGER = LoggerFactory.getLogger("BlackAddons-DungeonScore");

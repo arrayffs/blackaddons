@@ -1,28 +1,11 @@
 package org.blackum.blackaddons.feature.customname;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.FormattedText;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
-import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.contents.TranslatableContents;
-import net.minecraft.util.FormattedCharSequence;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.common.constants.Constants;
-import org.blackum.blackaddons.feature.chat.ChatUtils;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -30,7 +13,24 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.constants.Constants;
+import org.blackum.blackaddons.feature.chat.ChatUtils;
 import org.blackum.blackaddons.feature.profile.PlayerProfileManager;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.util.FormattedCharSequence;
 
 public class CustomNameManager {
 

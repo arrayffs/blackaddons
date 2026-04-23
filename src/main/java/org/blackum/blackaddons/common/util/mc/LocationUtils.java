@@ -1,16 +1,17 @@
 package org.blackum.blackaddons.common.util.mc;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.phys.Vec3;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.common.model.DungeonFloor;
-import org.blackum.blackaddons.client.render.DebugBoxRenderer;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
+import org.blackum.blackaddons.client.render.DebugBoxRenderer;
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.model.DungeonFloor;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.world.phys.Vec3;
 
 public class LocationUtils {
     private static final int COLOR_WHITE = 0xFFFFFFFF;

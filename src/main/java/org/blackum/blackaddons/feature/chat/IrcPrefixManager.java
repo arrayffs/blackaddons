@@ -1,10 +1,9 @@
 package org.blackum.blackaddons.feature.chat;
 
-import net.fabricmc.fabric.api.client.message.v1.ClientSendMessageEvents;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.Blackaddons;
-
 import java.lang.reflect.Field;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.config.ConfigManager;
 
 public class IrcPrefixManager {
     private static String cachedPrefix = null;

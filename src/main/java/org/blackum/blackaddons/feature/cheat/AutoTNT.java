@@ -1,27 +1,26 @@
 package org.blackum.blackaddons.feature.cheat;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
+import org.blackum.blackaddons.common.util.mc.LocationUtils;
+import org.blackum.blackaddons.mixin.core.InventoryAccessor;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
-import org.blackum.blackaddons.mixin.core.InventoryAccessor;
-import net.minecraft.network.chat.Component;
-import org.blackum.blackaddons.common.util.mc.LocationUtils;
-
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Random;
-
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.BlockPos;
 
 public class AutoTNT {
     private static final List<Block> TARGET_BLOCKS = List.of(

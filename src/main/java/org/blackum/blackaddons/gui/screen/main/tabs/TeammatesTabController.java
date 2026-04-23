@@ -1,42 +1,29 @@
 package org.blackum.blackaddons.gui.screen.main.tabs;
 
 
-import org.blackum.blackaddons.gui.screen.main.BaseScreen;
-import org.blackum.blackaddons.gui.screen.main.BlackAddonsGUI;
-import org.blackum.blackaddons.gui.screen.feature.ModOrganizer;
-import org.blackum.blackaddons.gui.screen.feature.WaypointEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.WaypointGroupEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.WaypointActionEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.ChatActionEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.IrcScreen;
-import org.blackum.blackaddons.gui.screen.feature.ImagePreviewScreen;
-import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
-import org.blackum.blackaddons.gui.screen.feature.PartyFinderScreen;
-import org.blackum.blackaddons.gui.screen.feature.PartyCreationScreen;
-import org.blackum.blackaddons.gui.screen.feature.SoloLeaderboardScreen;
-import org.blackum.blackaddons.gui.screen.debug.DemoScreen;
-import org.blackum.blackaddons.gui.screen.debug.TestMenuScreen;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.sounds.SoundEvents;
-import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
-import org.blackum.blackaddons.common.model.Teammate;
-import org.blackum.blackaddons.common.util.io.JsonUtils;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import org.blackum.blackaddons.common.model.Teammate;
+import org.blackum.blackaddons.common.util.io.JsonUtils;
 import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
+import org.blackum.blackaddons.gui.widget.base.Button;
+import org.blackum.blackaddons.gui.widget.base.Widget;
+import org.blackum.blackaddons.gui.widget.input.TextField;
+import org.blackum.blackaddons.gui.widget.layout.ListView;
+import org.blackum.blackaddons.gui.widget.layout.TabPanel;
+import org.blackum.blackaddons.gui.widget.row.TeammateRow;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.sounds.SoundEvents;
 
 public class TeammatesTabController extends ProfileTabController {
 

@@ -1,10 +1,11 @@
 package org.blackum.blackaddons.gui.widget.base;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Consumer;
+
+import org.blackum.blackaddons.common.model.SkyblockItem;
+import org.blackum.blackaddons.gui.render.RenderHelper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -13,12 +14,6 @@ import net.minecraft.client.gui.screens.inventory.tooltip.DefaultTooltipPosition
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import org.blackum.blackaddons.common.model.SkyblockItem;
-import org.blackum.blackaddons.gui.render.RenderHelper;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Consumer;
 
 public class ItemGridWidget extends Widget {
     private final List<SkyblockItem> items;

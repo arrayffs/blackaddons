@@ -1,16 +1,16 @@
 package org.blackum.blackaddons.feature.rng;
 
-import org.blackum.blackaddons.feature.rng.LocalRngManager;
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.chat.Component;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.service.BotIntegration;
-import org.blackum.blackaddons.common.util.mc.LocationUtils;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.common.constants.Constants;
+import org.blackum.blackaddons.common.util.mc.LocationUtils;
+import org.blackum.blackaddons.service.BotIntegration;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 
 public class RngTracker {
 

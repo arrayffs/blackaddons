@@ -1,14 +1,14 @@
 package org.blackum.blackaddons.gui.render.font;
 
-import org.lwjgl.stb.STBTruetype;
-import org.lwjgl.stb.STBTTFontinfo;
-import org.lwjgl.stb.STBTTVertex;
-import org.lwjgl.system.MemoryStack;
-
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTTVertex;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryStack;
 
 public class VectorFontManager {
     private static VectorFontManager instance;

@@ -1,23 +1,23 @@
 package org.blackum.blackaddons.client.render;
 
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.LightTexture;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.util.Mth;
-import net.minecraft.world.phys.Vec3;
+import java.awt.Color;
+
 import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.client.render.BlackaddonsRenderTypes;
 import org.blackum.blackaddons.common.util.mc.McCompat;
 import org.blackum.blackaddons.feature.waypoint.Waypoint;
 import org.blackum.blackaddons.feature.waypoint.WaypointAnimation;
 import org.blackum.blackaddons.feature.waypoint.WaypointGroup;
 import org.blackum.blackaddons.feature.waypoint.WaypointManager;
 import org.joml.Matrix4f;
-import org.lwjgl.system.linux.CMsghdr;
 
-import java.awt.Color;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.LightTexture;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.util.Mth;
+import net.minecraft.world.phys.Vec3;
 
 public class WaypointRenderer {
 

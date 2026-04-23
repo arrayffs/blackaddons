@@ -1,17 +1,5 @@
 package org.blackum.blackaddons.feature.chat;
 
-import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
-import org.blackum.blackaddons.feature.chat.EmojiUtils;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.config.ConfigManager;
-
 import java.net.URI;
 import java.net.URLEncoder;
 import java.net.http.HttpClient;
@@ -26,6 +14,19 @@ import java.util.concurrent.CompletionStage;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 
 public class IrcClient implements WebSocket.Listener {
     private static IrcClient instance;

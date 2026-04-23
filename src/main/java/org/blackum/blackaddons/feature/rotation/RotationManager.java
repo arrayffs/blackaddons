@@ -1,22 +1,23 @@
 package org.blackum.blackaddons.feature.rotation;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.mixin.core.GameRendererAccessor;
+import org.joml.Matrix4f;
+import org.joml.Vector4f;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.DeltaTracker;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.util.Mth;
-import net.minecraft.ChatFormatting;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.mixin.core.GameRendererAccessor;
 import net.minecraft.world.phys.Vec3;
-import org.joml.Matrix4f;
-import org.joml.Vector4f;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 public class RotationManager {
     private static final float STOP_THRESHOLD = 0.05f;

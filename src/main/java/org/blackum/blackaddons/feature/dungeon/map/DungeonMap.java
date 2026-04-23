@@ -1,18 +1,25 @@
 package org.blackum.blackaddons.feature.dungeon.map;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.network.protocol.game.ClientboundMapItemDataPacket;
-import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.blackum.blackaddons.Blackaddons;
 import org.blackum.blackaddons.common.model.DungeonFloor;
 import org.blackum.blackaddons.common.util.mc.LocationUtils;
 
-import java.util.*;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.protocol.game.ClientboundMapItemDataPacket;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.MapItem;
 import net.minecraft.world.level.saveddata.maps.MapId;
-import org.blackum.blackaddons.feature.dungeon.map.DungeonScoreboard;
+import net.minecraft.world.level.saveddata.maps.MapItemSavedData;
 
 public class DungeonMap {
 

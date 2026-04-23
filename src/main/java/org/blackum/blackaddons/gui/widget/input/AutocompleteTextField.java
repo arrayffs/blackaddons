@@ -1,20 +1,14 @@
 package org.blackum.blackaddons.gui.widget.input;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.core.registries.BuiltInRegistries;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.render.RenderHelper;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Supplier;
+
+import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 
 public class AutocompleteTextField extends TextField {
     private final Supplier<List<String>> suggestionProvider;

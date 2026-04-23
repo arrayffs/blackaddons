@@ -1,16 +1,11 @@
 package org.blackum.blackaddons.gui.widget.input;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import java.util.function.Consumer;
+
+import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
 
 import net.minecraft.client.gui.GuiGraphics;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.render.ColorUtils;
-import org.blackum.blackaddons.gui.render.RenderHelper;
-import java.util.function.Consumer;
 
 public class SmallColorPicker extends ColorPicker {
     public static final int S_WIDTH = 100;

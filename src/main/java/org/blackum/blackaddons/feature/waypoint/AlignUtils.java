@@ -1,20 +1,22 @@
 package org.blackum.blackaddons.feature.waypoint;
 
-import com.mojang.blaze3d.platform.InputConstants;
-import net.minecraft.client.KeyMapping;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.core.BlockPos;
-import net.minecraft.ChatFormatting;
-import net.minecraft.util.Mth;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.feature.rotation.RotationManager;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
+import org.blackum.blackaddons.feature.rotation.RotationManager;
+
+import com.mojang.blaze3d.platform.InputConstants;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.KeyMapping;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
 
 public class AlignUtils {
     private static final double ALIGN_EPSILON = 1.0E-4D;

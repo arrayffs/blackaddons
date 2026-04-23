@@ -1,11 +1,11 @@
 package org.blackum.blackaddons.gui.hud;
 
-import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
-
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
+
+import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 
 public final class HudRegistry {
     private static final Map<String, HudElement> ELEMENTS = new LinkedHashMap<>();

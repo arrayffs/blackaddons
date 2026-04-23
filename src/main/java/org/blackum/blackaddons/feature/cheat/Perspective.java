@@ -1,17 +1,18 @@
 package org.blackum.blackaddons.feature.cheat;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.lwjgl.glfw.GLFW;
+
+import com.mojang.blaze3d.platform.InputConstants;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
-import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
-import org.lwjgl.glfw.GLFW;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public final class Perspective {
     private static final Perspective INSTANCE = new Perspective();

@@ -1,8 +1,17 @@
 package org.blackum.blackaddons.feature.update;
 
+import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
+
+import java.net.URI;
+
+import org.blackum.blackaddons.common.constants.Constants;
+import org.blackum.blackaddons.common.util.io.HttpUtils;
+import org.blackum.blackaddons.feature.chat.ChatUtils;
+import org.blackum.blackaddons.gui.render.Theme;
+
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import java.net.URI;
+
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.ClickEvent;
@@ -11,13 +20,6 @@ import net.minecraft.network.chat.HoverEvent;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import org.blackum.blackaddons.common.constants.Constants;
-import org.blackum.blackaddons.common.util.io.HttpUtils;
-import org.blackum.blackaddons.feature.chat.ChatUtils;
-import org.blackum.blackaddons.gui.render.Theme;
-
-import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
-import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
 
 public class UpdateManager {
 

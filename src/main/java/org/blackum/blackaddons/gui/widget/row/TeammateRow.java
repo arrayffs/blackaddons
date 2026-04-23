@@ -1,20 +1,17 @@
 package org.blackum.blackaddons.gui.widget.row;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import org.blackum.blackaddons.common.constants.Constants;
+import org.blackum.blackaddons.common.model.Teammate;
+import org.blackum.blackaddons.common.util.format.FormatUtils;
+import org.blackum.blackaddons.gui.animation.Animation;
+import org.blackum.blackaddons.gui.animation.Easing;
+import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.gui.widget.base.Button;
+import org.blackum.blackaddons.gui.widget.base.Widget;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import org.blackum.blackaddons.gui.animation.Animation;
-import org.blackum.blackaddons.gui.animation.Easing;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.common.model.Teammate;
-import org.blackum.blackaddons.common.constants.Constants;
-import org.blackum.blackaddons.common.util.format.FormatUtils;
 
 public class TeammateRow extends Widget {
     private final Teammate tm;

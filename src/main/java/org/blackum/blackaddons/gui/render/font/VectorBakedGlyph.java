@@ -1,22 +1,24 @@
 package org.blackum.blackaddons.gui.render.font;
 
-import com.mojang.blaze3d.font.GlyphInfo;
-import com.mojang.blaze3d.pipeline.RenderPipeline;
-import com.mojang.blaze3d.textures.GpuTextureView;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.font.TextRenderable;
-import net.minecraft.client.gui.font.glyphs.BakedGlyph;
-import net.minecraft.client.renderer.texture.DynamicTexture;
-import net.minecraft.network.chat.Style;
 import org.blackum.blackaddons.client.render.BlackaddonsRenderPipelines;
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.joml.Matrix4f;
 import org.joml.Vector4f;
+
+import com.mojang.blaze3d.font.GlyphInfo;
+import com.mojang.blaze3d.pipeline.RenderPipeline;
+import com.mojang.blaze3d.textures.GpuTextureView;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.font.TextRenderable;
+import net.minecraft.client.gui.font.glyphs.BakedGlyph;
 //? if < 1.21.11 {
 /*import net.minecraft.client.renderer.RenderType;*/
 //?} else
 import net.minecraft.client.renderer.rendertype.RenderType;
+import net.minecraft.client.renderer.texture.DynamicTexture;
+import net.minecraft.network.chat.Style;
 
 public class VectorBakedGlyph implements BakedGlyph {
     private final int codepoint;

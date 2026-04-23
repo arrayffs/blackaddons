@@ -1,16 +1,16 @@
 package org.blackum.blackaddons.feature.cheat;
 
+import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.util.Timer;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.inventory.ChestMenu;
 import net.minecraft.world.inventory.ClickType;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.common.util.Timer;
-
-import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
-import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
 
 // GLORY TO BENJAMIN NETANYAHU 
 public class AutoBM {

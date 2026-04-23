@@ -1,21 +1,21 @@
 package org.blackum.blackaddons.feature.cheat;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.util.mc.LocationUtils;
+import org.blackum.blackaddons.feature.chat.ChatActionExecutor;
+import org.blackum.blackaddons.feature.chat.ChatUtils;
+import org.blackum.blackaddons.feature.rotation.RotationManager;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.feature.rotation.RotationManager;
-import org.blackum.blackaddons.common.util.mc.LocationUtils;
-import org.blackum.blackaddons.common.util.mc.ScoreboardUtils;
-import org.blackum.blackaddons.feature.chat.ChatActionExecutor;
-import org.blackum.blackaddons.feature.chat.ChatUtils;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RelicLook {
     private static final Pattern RELIC_PICKUP_PATTERN = Pattern.compile("^([A-Za-z0-9_]+) picked the Corrupted (Red|Orange) Relic!$");

@@ -1,8 +1,8 @@
 package org.blackum.blackaddons.gui.render;
 
-import net.minecraft.client.Minecraft;
 import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.gui.render.Theme;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 
 public class RenderHelper {

@@ -1,13 +1,5 @@
 package org.blackum.blackaddons.feature.profile;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.PlayerInfo;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.constants.Constants;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -23,6 +15,16 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.constants.Constants;
+
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import net.fabricmc.loader.api.FabricLoader;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.multiplayer.PlayerInfo;
 
 public class PlayerProfileManager {
 

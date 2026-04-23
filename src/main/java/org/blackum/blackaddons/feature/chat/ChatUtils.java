@@ -1,14 +1,15 @@
 package org.blackum.blackaddons.feature.chat;
 
+import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
+
+import org.blackum.blackaddons.common.util.accessor.AnimatedTextColorAccessor;
+import org.blackum.blackaddons.mixin.core.TextColorAccessor;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import org.blackum.blackaddons.common.util.accessor.AnimatedTextColorAccessor;
-import org.blackum.blackaddons.mixin.core.TextColorAccessor;
-import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
-import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
 
 public class ChatUtils {
 

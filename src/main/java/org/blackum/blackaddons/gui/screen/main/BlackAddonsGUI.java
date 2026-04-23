@@ -1,40 +1,41 @@
 package org.blackum.blackaddons.gui.screen.main;
 
 
-import org.blackum.blackaddons.gui.screen.main.BaseScreen;
-import org.blackum.blackaddons.gui.screen.main.BlackAddonsGUI;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.function.Consumer;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.gui.render.Theme;
 import org.blackum.blackaddons.gui.screen.feature.ModOrganizer;
-import org.blackum.blackaddons.gui.screen.feature.WaypointEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.WaypointGroupEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.WaypointActionEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.ChatActionEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.IrcScreen;
-import org.blackum.blackaddons.gui.screen.feature.ImagePreviewScreen;
-import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
-import org.blackum.blackaddons.gui.screen.feature.PartyFinderScreen;
-import org.blackum.blackaddons.gui.screen.feature.PartyCreationScreen;
-import org.blackum.blackaddons.gui.screen.feature.SoloLeaderboardScreen;
-import org.blackum.blackaddons.gui.screen.debug.DemoScreen;
-import org.blackum.blackaddons.gui.screen.debug.TestMenuScreen;
+import org.blackum.blackaddons.gui.screen.main.tabs.AboutTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.ChatActionsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.ChatFiltersTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.CheatsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.ConfigsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.DungeonsSettingsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.LegitTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.ModHiderTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.PayloadsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.SettingsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.SimpleTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.SoloClearsTabController;
+import org.blackum.blackaddons.gui.screen.main.tabs.WaypointsTabController;
+import org.blackum.blackaddons.gui.widget.base.Button;
+import org.blackum.blackaddons.gui.widget.base.Label;
+import org.blackum.blackaddons.gui.widget.base.Widget;
+import org.blackum.blackaddons.gui.widget.input.Checkbox;
+import org.blackum.blackaddons.gui.widget.input.TextField;
+import org.blackum.blackaddons.gui.widget.layout.ListView;
+import org.blackum.blackaddons.gui.widget.layout.TabPanel;
+
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.gui.screen.main.tabs.*;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.function.Consumer;
 
 public class BlackAddonsGUI extends BaseScreen {
 

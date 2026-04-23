@@ -1,19 +1,14 @@
 package org.blackum.blackaddons.gui.widget.input;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import java.util.function.Consumer;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
 import org.blackum.blackaddons.gui.animation.Animation;
 import org.blackum.blackaddons.gui.animation.Easing;
-import org.blackum.blackaddons.gui.render.Theme;
 import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.gui.widget.base.Widget;
 
-import java.util.function.Consumer;
+import net.minecraft.client.gui.GuiGraphics;
 
 public class Slider extends Widget {
     private float value;

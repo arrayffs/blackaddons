@@ -1,5 +1,10 @@
 package org.blackum.blackaddons.feature.dungeon.map;
 
+import java.util.List;
+import java.util.Set;
+
+import org.blackum.blackaddons.common.util.mc.LocationUtils;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientChunkEvents;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.minecraft.client.Minecraft;
@@ -10,11 +15,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.TrappedChestBlockEntity;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.util.mc.LocationUtils;
-
-import java.util.List;
-import java.util.Set;
 
 public class DungeonWorldScanner {
 

@@ -1,19 +1,16 @@
 package org.blackum.blackaddons.gui.widget.layout;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
-
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.Minecraft;
-import com.mojang.blaze3d.platform.InputConstants;
-import org.lwjgl.glfw.GLFW;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.render.RenderHelper;
-
 import java.util.List;
+
+import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.gui.widget.base.Widget;
+import org.lwjgl.glfw.GLFW;
+
+import com.mojang.blaze3d.platform.InputConstants;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
 
 public class ResizableCard extends Card {
 

@@ -1,16 +1,13 @@
 package org.blackum.blackaddons.gui.widget.layout;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
-
-import net.minecraft.client.gui.GuiGraphics;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import org.blackum.blackaddons.gui.widget.base.Widget;
+
+import net.minecraft.client.gui.GuiGraphics;
 
 public class GridRow extends Widget {
     private final List<Map.Entry<Widget, Integer>> children = new ArrayList<>();

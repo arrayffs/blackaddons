@@ -1,18 +1,14 @@
 package org.blackum.blackaddons.gui.widget.row;
 
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.gui.render.RenderHelper;
+import org.blackum.blackaddons.gui.render.Theme;
+import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
+import org.blackum.blackaddons.gui.widget.base.Widget;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
-import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.gui.render.Theme;
-import org.blackum.blackaddons.gui.render.RenderHelper;
 
 public class LeaderboardRow extends Widget {
     private final int rank;

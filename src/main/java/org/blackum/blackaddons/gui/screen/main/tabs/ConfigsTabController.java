@@ -1,22 +1,11 @@
 package org.blackum.blackaddons.gui.screen.main.tabs;
 
 
-import org.blackum.blackaddons.gui.screen.main.BaseScreen;
-import org.blackum.blackaddons.gui.screen.main.BlackAddonsGUI;
-import org.blackum.blackaddons.gui.screen.feature.ModOrganizer;
-import org.blackum.blackaddons.gui.screen.feature.WaypointEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.WaypointGroupEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.WaypointActionEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.ChatActionEditScreen;
-import org.blackum.blackaddons.gui.screen.feature.IrcScreen;
-import org.blackum.blackaddons.gui.screen.feature.ImagePreviewScreen;
-import org.blackum.blackaddons.gui.screen.feature.ProfileViewerScreen;
-import org.blackum.blackaddons.gui.screen.feature.PartyFinderScreen;
-import org.blackum.blackaddons.gui.screen.feature.PartyCreationScreen;
-import org.blackum.blackaddons.gui.screen.feature.SoloLeaderboardScreen;
-import org.blackum.blackaddons.gui.screen.debug.DemoScreen;
-import org.blackum.blackaddons.gui.screen.debug.TestMenuScreen;
-import net.fabricmc.loader.api.FabricLoader;
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.blackum.blackaddons.common.config.ActionManager;
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.common.config.ProfileManager;
@@ -25,16 +14,17 @@ import org.blackum.blackaddons.common.util.mc.McCompat;
 import org.blackum.blackaddons.feature.waypoint.WaypointManager;
 import org.blackum.blackaddons.gui.render.Theme;
 import org.blackum.blackaddons.gui.screen.main.BlackAddonsGUI;
-import org.blackum.blackaddons.gui.widget.base.*;
-import org.blackum.blackaddons.gui.widget.input.*;
-import org.blackum.blackaddons.gui.widget.layout.*;
-import org.blackum.blackaddons.gui.widget.row.*;
-import org.blackum.blackaddons.gui.widget.editor.*;
+import org.blackum.blackaddons.gui.widget.base.Button;
+import org.blackum.blackaddons.gui.widget.base.Label;
+import org.blackum.blackaddons.gui.widget.base.SectionHeader;
+import org.blackum.blackaddons.gui.widget.base.SettingWrapper;
+import org.blackum.blackaddons.gui.widget.input.Dropdown;
+import org.blackum.blackaddons.gui.widget.input.TextField;
+import org.blackum.blackaddons.gui.widget.layout.ExpandableGroup;
+import org.blackum.blackaddons.gui.widget.layout.ListView;
+import org.blackum.blackaddons.gui.widget.layout.TabPanel;
 
-import java.io.File;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+import net.fabricmc.loader.api.FabricLoader;
 
 public class ConfigsTabController extends SimpleTabController {
     private static ProfileManager.Category selectedCategory = ProfileManager.Category.CONFIG;

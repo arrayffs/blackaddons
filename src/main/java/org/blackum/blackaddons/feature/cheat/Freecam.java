@@ -1,21 +1,23 @@
 package org.blackum.blackaddons.feature.cheat;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
+import org.joml.Vector3d;
+import org.lwjgl.glfw.GLFW;
+
+import com.mojang.blaze3d.platform.InputConstants;
+
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayConnectionEvents;
-import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Options;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import org.blackum.blackaddons.common.config.ConfigManager;
-import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
-import org.joml.Vector3d;
-import org.lwjgl.glfw.GLFW;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public final class Freecam {
     private static final Freecam INSTANCE = new Freecam();

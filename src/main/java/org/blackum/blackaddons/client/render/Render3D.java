@@ -1,13 +1,14 @@
 package org.blackum.blackaddons.client.render;
 
+import org.joml.Matrix4f;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.Vec3;
-import org.blackum.blackaddons.client.render.BlackaddonsRenderTypes;
-import org.joml.Matrix4f;
 
 public class Render3D {
     public static void renderTracer(RenderContext ctx, Vec3 pos, int color, float thickness) {

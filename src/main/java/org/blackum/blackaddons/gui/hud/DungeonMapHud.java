@@ -1,10 +1,10 @@
 package org.blackum.blackaddons.gui.hud;
 
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.render.state.GuiRenderState;
-import org.blackum.blackaddons.Blackaddons;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.common.util.mc.LocationUtils;
 import org.blackum.blackaddons.feature.dungeon.map.Door;
@@ -16,10 +16,10 @@ import org.blackum.blackaddons.gui.render.RoundedFillRenderState;
 import org.blackum.blackaddons.mixin.gui.GuiGraphicsAccessor;
 import org.joml.Matrix3x2f;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.render.state.GuiRenderState;
 
 public class DungeonMapHud implements HudElement {
 

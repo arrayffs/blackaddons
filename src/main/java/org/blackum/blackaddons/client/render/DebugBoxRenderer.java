@@ -1,14 +1,15 @@
 package org.blackum.blackaddons.client.render;
 
+import java.util.List;
+
+import org.joml.Matrix4f;
+
 import com.mojang.blaze3d.vertex.VertexConsumer;
+
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.world.phys.Vec3;
-import org.blackum.blackaddons.client.render.BlackaddonsRenderTypes;
-import org.joml.Matrix4f;
-
-import java.util.List;
 
 public final class DebugBoxRenderer {
     private static final float DEFAULT_THICKNESS = 0.05f;

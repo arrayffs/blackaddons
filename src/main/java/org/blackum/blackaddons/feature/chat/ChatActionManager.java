@@ -1,16 +1,17 @@
 package org.blackum.blackaddons.feature.chat;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundEvent;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
 import org.blackum.blackaddons.common.config.ActionManager;
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.common.util.mc.McCompat;
 import org.blackum.blackaddons.gui.notification.NotificationManager;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-import org.blackum.blackaddons.common.util.format.FormatUtils;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 
 public class ChatActionManager {
     private static ChatActionManager instance;

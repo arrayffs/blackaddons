@@ -1,15 +1,5 @@
 package org.blackum.blackaddons.service;
 
-import org.blackum.blackaddons.common.constants.Constants;
-import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-import net.minecraft.network.chat.Component;
-import net.minecraft.client.Minecraft;
-import org.blackum.blackaddons.Blackaddons;
-import org.blackum.blackaddons.common.config.ConfigManager;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -17,9 +7,17 @@ import java.net.http.HttpResponse;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+
+import org.blackum.blackaddons.Blackaddons;
+import org.blackum.blackaddons.common.config.ConfigManager;
+import org.blackum.blackaddons.common.constants.Constants;
 import org.blackum.blackaddons.common.util.io.EncryptionUtils;
+import org.blackum.blackaddons.common.util.mc.MinecraftInstance;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 public class BotIntegration {
     private static final HttpClient client = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_1_1)

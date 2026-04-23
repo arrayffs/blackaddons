@@ -1,13 +1,13 @@
 package org.blackum.blackaddons.feature.hud;
 
-import net.minecraft.client.DeltaTracker;
-import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.world.item.ItemStack;
+import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
+
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.gui.hud.HudElement;
 import org.blackum.blackaddons.gui.hud.HudRegistry;
 
-import static org.blackum.blackaddons.common.util.mc.MinecraftInstance.mc;
+import net.minecraft.client.DeltaTracker;
+import net.minecraft.client.gui.GuiGraphics;
 
 public class Healthbar implements HudElement {
     public static void register() {

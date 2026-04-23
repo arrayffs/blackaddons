@@ -1,17 +1,17 @@
 package org.blackum.blackaddons.gui.render.font;
 
-import org.lwjgl.stb.STBTruetype;
-import org.lwjgl.stb.STBTTFontinfo;
-import org.lwjgl.stb.STBTTVertex;
-import org.lwjgl.system.MemoryStack;
-import org.lwjgl.system.MemoryUtil;
-
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.lwjgl.stb.STBTTFontinfo;
+import org.lwjgl.stb.STBTTVertex;
+import org.lwjgl.stb.STBTruetype;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
 
 public class CustomFontManager {
     private final STBTTFontinfo fontInfo;
