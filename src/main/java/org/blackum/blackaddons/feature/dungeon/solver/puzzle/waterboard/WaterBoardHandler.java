@@ -94,6 +94,8 @@ public class WaterBoardHandler {
     }
 
     public static void manualTrigger() {
+        if (!ConfigManager.data.waterBoardSolverEnabled)
+            return;
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null || mc.level == null)
             return;

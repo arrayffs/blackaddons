@@ -37,6 +37,7 @@ public class DungeonMap {
     private static Room localRoom = null;
 
     public static void onMapPacket(ClientboundMapItemDataPacket packet) {
+        if (!ConfigManager.data.dungeonMapEnabled) return;
         if (!LocationUtils.inDungeons()) return;
 
         Minecraft mc = Minecraft.getInstance();

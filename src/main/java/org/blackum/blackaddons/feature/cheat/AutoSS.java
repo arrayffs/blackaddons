@@ -119,6 +119,7 @@ public class AutoSS {
     }
 
     private static void handleChatMessage(Component message) {
+        if (!ConfigManager.data.AutoSSEnabled) return;
         if (!LocationUtils.inDungeons()) return;
         String text = message.getString();
         if (text == null) return;
@@ -719,6 +720,7 @@ public class AutoSS {
     }
 
     private static void handleClick(BlockPos clickedPos) {
+        if (!ConfigManager.data.AutoSSEnabled) return;
         if (!LocationUtils.inDungeons()) return;
 
         if (clickedPos.getX() == START_BUTTON.getX() && clickedPos.getY() == START_BUTTON.getY() && clickedPos.getZ() == START_BUTTON.getZ()) {

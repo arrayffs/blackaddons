@@ -7,6 +7,7 @@ import net.minecraft.network.chat.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -18,8 +19,21 @@ public class TabListUtils {
         if (mc.getConnection() == null) return Collections.emptyList();
 
         Collection<PlayerInfo> players = mc.getConnection().getOnlinePlayers();
+        PlayerInfo[] playersArray;
+        
+        try {
+            playersArray = players.toArray(new PlayerInfo[0]);
+        } catch (ConcurrentModificationException e) {
+            try {
+                playersArray = players.toArray(new PlayerInfo[0]);
+            } catch (ConcurrentModificationException e2) {
+                return Collections.emptyList();
+            }
+        }
+
         List<String> lines = new ArrayList<>();
-        for (PlayerInfo player : players) {
+        for (PlayerInfo player : playersArray) {
+            if (player == null) continue;
             Component name = player.getTabListDisplayName();
             String label = name != null ? name.getString() : player.getProfile().name();
             lines.add(STRIP_COLOR_PATTERN.matcher(label).replaceAll("").trim());

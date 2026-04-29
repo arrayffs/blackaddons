@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.protocol.game.ClientboundPlayerPositionPacket;
 import net.minecraft.world.level.block.Blocks;
@@ -13,6 +14,7 @@ import org.blackum.blackaddons.Blackaddons;
 import org.blackum.blackaddons.common.config.ConfigManager;
 import org.blackum.blackaddons.client.render.RenderContext;
 import org.blackum.blackaddons.client.render.Render3D;
+import org.blackum.blackaddons.common.util.accessor.KeyBindingAccessor;
 
 public class TpMazeSolver {
 
@@ -33,6 +35,24 @@ public class TpMazeSolver {
     private static double lastPktX = Double.NaN;
     private static double lastPktZ = Double.NaN;
     private static long lastPktTime = 0;
+    private static int movementTicks = 0;
+    private static int postSnapTicks = 0;
+    private static boolean forcingForward = false;
+
+    private enum FinalPhase {
+        NONE,
+        WAITING_FOR_LAND,
+        MOVE_FORWARD,
+        LOOK_AT_CHEST,
+        CLICK_CHEST,
+        SNAP_TO_EXIT,
+        MOVE_TO_PAD,
+        DONE
+    }
+
+    private static FinalPhase finalPhase = FinalPhase.NONE;
+    private static int phaseTicks = 0;
+    private static BlockPos targetChest = null;
 
     private TpMazeSolver() {}
 
@@ -91,6 +111,15 @@ public class TpMazeSolver {
         lastPktX = Double.NaN;
         lastPktZ = Double.NaN;
         lastPktTime = 0;
+        movementTicks = 0;
+        postSnapTicks = 0;
+        if (forcingForward) {
+            setKeyState(Minecraft.getInstance().options.keyUp, false);
+            forcingForward = false;
+        }
+        finalPhase = FinalPhase.NONE;
+        phaseTicks = 0;
+        targetChest = null;
     }
 
     public static void onServerTeleportPacket(ClientboundPlayerPositionPacket packet) {
@@ -102,6 +131,12 @@ public class TpMazeSolver {
         float yaw = packet.change().yRot();
 
         if (nx % 0.5 != 0.0 || ny != TELEPORT_Y || nz % 0.5 != 0.0) return;
+
+        if (pads.isEmpty()) {
+            active = true;
+            scan(new BlockPos((int) nx, SCAN_Y, (int) nz));
+            Blackaddons.LOGGER.info("[TpMaze] Emergency early scan triggered");
+        }
 
         long now = System.currentTimeMillis();
         if (nx == lastPktX && nz == lastPktZ && now - lastPktTime < 500) return;
@@ -132,7 +167,11 @@ public class TpMazeSolver {
 
         if (cellPadCount <= 2) {
             bestPad = null;
-            Blackaddons.LOGGER.info("[TpMaze] final cell, done");
+            if (finalPhase == FinalPhase.NONE) {
+                finalPhase = FinalPhase.WAITING_FOR_LAND;
+                phaseTicks = 7; // increased to 7 ticks as requested
+                Blackaddons.LOGGER.info("[TpMaze] final cell detected, starting sequence");
+            }
             return;
         }
 
@@ -148,17 +187,22 @@ public class TpMazeSolver {
 
         if (candidates.isEmpty()) { bestPad = null; return; }
 
-        boolean diag = ConfigManager.data.teleportMazePrioritizeDiagonal;
-        List<TpPad> filtered = new ArrayList<>();
-        for (TpPad p : candidates) {
-            boolean isDiag = p.pos.getX() != landedPad.pos.getX() && p.pos.getZ() != landedPad.pos.getZ();
-            if (isDiag == diag) filtered.add(p);
+        // Trust the server's rotation (yaw from packet) above all else.
+        // The diagonal heuristic is only a fallback if rotation-based selection is disabled.
+        List<TpPad> selectionSource = candidates;
+        if (!ConfigManager.data.teleportMazeAutoRotate) {
+            boolean diag = ConfigManager.data.teleportMazePrioritizeDiagonal;
+            List<TpPad> diagonalFiltered = new ArrayList<>();
+            for (TpPad p : candidates) {
+                boolean isDiag = p.pos.getX() != landedPad.pos.getX() && p.pos.getZ() != landedPad.pos.getZ();
+                if (isDiag == diag) diagonalFiltered.add(p);
+            }
+            if (!diagonalFiltered.isEmpty()) selectionSource = diagonalFiltered;
         }
-        if (filtered.isEmpty()) filtered = candidates;
 
         double minAngle = Double.MAX_VALUE;
         TpPad best = null;
-        for (TpPad p : filtered) {
+        for (TpPad p : selectionSource) {
             double dx = p.pos.getX() + 0.5 - nx;
             double dz = p.pos.getZ() + 0.5 - nz;
             double angle = angleDiff(dx, dz, yaw);
@@ -178,6 +222,146 @@ public class TpMazeSolver {
                 executeRotation();
             }
         }
+        
+        if (postSnapTicks > 0) {
+            postSnapTicks--;
+            if (postSnapTicks == 0) {
+                movementTicks = 20;
+            }
+            return;
+        }
+
+        if (movementTicks > 0) {
+            movementTicks--;
+            setKeyState(Minecraft.getInstance().options.keyUp, true);
+            forcingForward = true;
+        } else if (forcingForward && finalPhase == FinalPhase.NONE) {
+            setKeyState(Minecraft.getInstance().options.keyUp, false);
+            forcingForward = false;
+        }
+
+        updateFinalSequence();
+    }
+
+    private static void updateFinalSequence() {
+        if (finalPhase == FinalPhase.NONE || finalPhase == FinalPhase.DONE) return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player == null) { resetSequence(); return; }
+
+        if (phaseTicks > 0) {
+            phaseTicks--;
+            return;
+        }
+
+        switch (finalPhase) {
+            case WAITING_FOR_LAND -> {
+                finalPhase = FinalPhase.MOVE_FORWARD;
+                phaseTicks = 1; // 1-tick nudge forward
+                setKeyState(mc.options.keyUp, true);
+                forcingForward = true;
+            }
+            case MOVE_FORWARD -> {
+                setKeyState(mc.options.keyUp, false);
+                forcingForward = false;
+                finalPhase = FinalPhase.LOOK_AT_CHEST;
+                targetChest = findChest();
+                if (targetChest != null) {
+                    org.blackum.blackaddons.feature.rotation.RotationManager.getInstance()
+                            .snapToBlock(targetChest.getX(), targetChest.getY(), targetChest.getZ());
+                } else {
+                    Blackaddons.LOGGER.info("[TpMaze] Chest not found, skipping interaction");
+                    finalPhase = FinalPhase.DONE;
+                }
+            }
+            case LOOK_AT_CHEST -> {
+                performRightClick();
+                finalPhase = FinalPhase.CLICK_CHEST;
+                phaseTicks = 3; // faster click wait
+            }
+            case CLICK_CHEST -> {
+                finalPhase = FinalPhase.SNAP_TO_EXIT;
+                BlockPos exitPad = findExitPad();
+                if (exitPad != null) {
+                    org.blackum.blackaddons.feature.rotation.RotationManager.getInstance()
+                            .snapToBlock(exitPad.getX(), exitPad.getY(), exitPad.getZ());
+                } else {
+                    // Fallback to relative movement direction if pad not found
+                    Blackaddons.LOGGER.info("[TpMaze] Exit pad not found, snapping to relative angle");
+                }
+                phaseTicks = 2; // wait 2t after exit snap as requested
+            }
+            case SNAP_TO_EXIT -> {
+                finalPhase = FinalPhase.MOVE_TO_PAD;
+                phaseTicks = 5; // 5-tick walk forward to exit pad
+                setKeyState(mc.options.keyUp, true);
+                forcingForward = true;
+            }
+            case MOVE_TO_PAD -> {
+                setKeyState(mc.options.keyUp, false);
+                forcingForward = false;
+                finalPhase = FinalPhase.DONE;
+                Blackaddons.LOGGER.info("[TpMaze] Final sequence complete");
+            }
+        }
+    }
+
+    private static void resetSequence() {
+        finalPhase = FinalPhase.NONE;
+        phaseTicks = 0;
+        targetChest = null;
+    }
+
+    private static BlockPos findChest() {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level == null || mc.player == null) return null;
+        BlockPos playerPos = mc.player.blockPosition();
+        for (int dx = -5; dx <= 5; dx++) {
+            for (int dy = -2; dy <= 2; dy++) {
+                for (int dz = -5; dz <= 5; dz++) {
+                    BlockPos p = playerPos.offset(dx, dy, dz);
+                    net.minecraft.world.level.block.Block b = mc.level.getBlockState(p).getBlock();
+                    if (b == net.minecraft.world.level.block.Blocks.CHEST || b == net.minecraft.world.level.block.Blocks.TRAPPED_CHEST) {
+                        return p;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
+    private static void performRightClick() {
+        List<org.blackum.blackaddons.common.config.ConfigManager.ActionStep> actions = new ArrayList<>();
+        actions.add(new org.blackum.blackaddons.common.config.ConfigManager.ActionStep(
+                org.blackum.blackaddons.common.config.ConfigManager.ActionStepType.USE_ITEM, 0, "", 0, 0));
+        org.blackum.blackaddons.feature.chat.ChatActionExecutor.getInstance().execute(actions, null);
+    }
+
+    private static BlockPos findExitPad() {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level == null || mc.player == null) return null;
+        BlockPos playerPos = mc.player.blockPosition();
+        
+        // Scan for end portal frames in a larger radius (final room is 8x8)
+        BlockPos best = null;
+        double minDist = Double.MAX_VALUE;
+        
+        for (int dx = -8; dx <= 8; dx++) {
+            for (int dy = -2; dy <= 2; dy++) {
+                for (int dz = -8; dz <= 8; dz++) {
+                    BlockPos p = playerPos.offset(dx, dy, dz);
+                    if (mc.level.getBlockState(p).is(net.minecraft.world.level.block.Blocks.END_PORTAL_FRAME)) {
+                        // Avoid the pad we are currently on/near if possible
+                        double d = p.distSqr(playerPos);
+                        if (d > 2 && d < minDist) {
+                            minDist = d;
+                            best = p;
+                        }
+                    }
+                }
+            }
+        }
+        return best;
     }
 
     public static void onServerTeleportPost() {
@@ -199,6 +383,16 @@ public class TpMazeSolver {
         } else {
             org.blackum.blackaddons.feature.rotation.RotationManager.getInstance()
                     .snapToAngle(targetYaw, mc.player.getXRot());
+        }
+
+        postSnapTicks = 2;
+    }
+
+    private static void setKeyState(KeyMapping key, boolean pressed) {
+        if (key instanceof KeyBindingAccessor accessor) {
+            KeyMapping.set(accessor.getBoundKey(), pressed);
+            accessor.setBlackaddonsIsDown(pressed);
+            accessor.blackaddons$setForced(pressed);
         }
     }
 

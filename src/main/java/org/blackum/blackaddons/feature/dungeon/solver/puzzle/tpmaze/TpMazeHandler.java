@@ -17,7 +17,11 @@ public class TpMazeHandler {
     private static final int RESET_DISTANCE_SQ = 30 * 30;
 
     public static void register() {
-        net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(client -> TpMazeSolver.onClientTick());
+        net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents.END_CLIENT_TICK.register(client -> {
+            if (ConfigManager.data.teleportMazeSolverEnabled) {
+                TpMazeSolver.onClientTick();
+            }
+        });
         
         WorldRenderEvents.BEFORE_TRANSLUCENT.register(context -> {
             if (!ConfigManager.data.teleportMazeSolverEnabled) return;
@@ -77,11 +81,13 @@ public class TpMazeHandler {
     }
 
     public static void onServerTeleportPre(ClientboundPlayerPositionPacket packet) {
+        if (!ConfigManager.data.teleportMazeSolverEnabled) return;
         if (!LocationUtils.inDungeons()) return;
         TpMazeSolver.onServerTeleportPacket(packet);
     }
 
     public static void onServerTeleportPost() {
+        if (!ConfigManager.data.teleportMazeSolverEnabled) return;
         if (!LocationUtils.inDungeons()) return;
         TpMazeSolver.onServerTeleportPost();
     }

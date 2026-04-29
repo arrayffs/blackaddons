@@ -11,7 +11,9 @@ import net.minecraft.world.scores.Scoreboard;
 import net.minecraft.world.scores.PlayerScoreEntry;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,9 +30,25 @@ public class ScoreboardUtils {
         if (objective == null)
             return Collections.emptyList();
 
-        List<PlayerScoreEntry> scores = new ArrayList<>(scoreboard.listPlayerScores(objective));
+        Collection<PlayerScoreEntry> scores;
+        try {
+            scores = scoreboard.listPlayerScores(objective);
+        } catch (ConcurrentModificationException e) {
+            return Collections.emptyList();
+        }
 
-        return scores.stream()
+        List<PlayerScoreEntry> safeScores;
+        try {
+            safeScores = new ArrayList<>(scores);
+        } catch (ConcurrentModificationException e) {
+            try {
+                safeScores = new ArrayList<>(scores);
+            } catch (ConcurrentModificationException e2) {
+                return Collections.emptyList();
+            }
+        }
+
+        return safeScores.stream()
                 .sorted((s1, s2) -> Integer.compare(s2.value(), s1.value()))
                 .limit(15)
                 .map(score -> {
